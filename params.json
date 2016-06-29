@@ -1,0 +1,6 @@
+{
+  "name": "Androidnetworkmodule",
+  "tagline": "volley wrapper for all network calls",
+  "body": "### Network Module for Android\r\nIt is a wrapper over android volley library, for making network call easy and maintaining multiple calls from same activity.\r\njust include this package and you are ready to use.\r\n\r\n###Making use\r\n\r\n```java\r\nNetworkManager.getInstance(getContext())\r\n                    .makeNetworkRequestForJSON(REQUEST_CODE,\r\n                            Request.Method (GET/ POST),\r\n                            URL,\r\n                            JSON parameter,\r\n                            header ,this /*must implement NetworkResponseListener from the same package*/);\r\n```\r\n### Handling response\r\nIf volley request succeeded with response code 200\r\nit will call `onDataReceived()` else `onDataFailed()`\r\n\r\n\r\n\r\n### Support or Contact\r\nHaving trouble with Pages? Check out our [documentation](https://help.github.com/pages) or [contact support](https://github.com/contact) and we’ll help you sort it out.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
