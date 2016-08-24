@@ -37,6 +37,10 @@ public class NetworkManager {
         return mInstance;
     }
 
+
+  /*
+  Network request for JSON Object
+  */
     public void makeNetworkRequestForJSON(final int requestCode, int method, String url, JSONObject param, final Map<String, String> headers, final NetworkResponseListener listener){
         JsonObjectRequest request = new JsonObjectRequest(
                 method, url, param,
@@ -65,6 +69,37 @@ public class NetworkManager {
         getRequestQueue().add(request);
     }
 
+/*
+Network request for JSON Array
+*/
+public void makeNetworkRequestForJSONArray(final int requestCode, int method, String url, JSONArray param, final Map<String, String> headers, final NetworkResponseListener listener){
+        JsonArrayRequest request = new JsonArrayRequest(
+                method, url, param,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, "onResponse() called with: " + "response = [" + response + "]");
+                        listener.onDataReceived(requestCode, response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse() called with: " + "error = [" + error + "]");
+                listener.onDataFailed(requestCode,error);
+            }
+        }
+        ){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                if(headers != null)
+                    return headers;
+                else
+                    return super.getHeaders();
+            }
+        };
+        request.setTag(requestCode);
+        getRequestQueue().add(request);
+    }
 
 
 }
