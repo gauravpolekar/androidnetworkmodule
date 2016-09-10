@@ -101,5 +101,11 @@ public void makeNetworkRequestForJSONArray(final int requestCode, int method, St
         getRequestQueue().add(request);
     }
 
+/*
+calcel request for specific request code
+*/
 
+	public void cancelRequest(int requestCode){
+		getRequestQueue().calcelAll(requestCode);
+	}
 }
