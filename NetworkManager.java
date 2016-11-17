@@ -1,16 +1,15 @@
 
 
 import android.content.Context;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
+import org.json.JSONArray;
 import org.json.JSONObject;
-
+import android.util.Log;
 import java.util.Map;
 
 /**
@@ -106,6 +105,6 @@ calcel request for specific request code
 */
 
 	public void cancelRequest(int requestCode){
-		getRequestQueue().calcelAll(requestCode);
+		getRequestQueue().cancelAll(requestCode);
 	}
 }
